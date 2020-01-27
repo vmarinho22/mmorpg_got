@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 /* importar o módulo do express-validator */
 var expressValidator = require('express-validator');
 
+
 /* iniciar o objeto do express */
 var app = express();
 
@@ -28,9 +29,9 @@ app.use(expressValidator());
 
 /* efetua o autoload das rotas, dos models e dos controllers para o objeto app */
 consign()
-	.include('app/routes')
-	.then('app/models')
-	.then('app/controllers')
+	.include('./app/routes')
+	.then('./app/models')
+	.then('./app/controllers')
 	.into(app);
 
 /* exportar o objeto app */
