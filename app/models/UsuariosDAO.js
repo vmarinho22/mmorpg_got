@@ -1,16 +1,18 @@
+/* Criando um Objeto de Usuários */
 function UsuariosDAO(connection){
-    this._connection = connection();
+    this._connection = connection;
 }
 
-
-UsuariosDAO.prototype.insertUsuario = function(usuario){
-    // Abre a conexão com o BD
-    this._connection.open(function(error,mongoclient){
-        // Abre a conexão e acessa a colletion desejada
-        mongoclient.colletion('usuarios',function(error,colletion){
-            colletion.insert(usuario);
-        });
-    });
+UsuariosDAO.prototype.inserirUsuario = function(dados_usuario,res){
+    var dados = {
+        operacao: 'inserir',
+        dados_usuario: dados_usuario,
+        collection: "usuarios",
+        callback: function(err,result){
+            res.send('Deu certo');
+        }
+    };
+    this._connection(dados);
 }
 
 module.exports = function(){

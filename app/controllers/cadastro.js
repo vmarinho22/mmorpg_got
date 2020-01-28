@@ -20,10 +20,7 @@ module.exports.cadastrar = function(application,req,res){
     var connection = application.config.dbConnection;
     var UsuariosDAO = new application.app.models.UsuariosDAO(connection);
     
+    
+    UsuariosDAO.inserirUsuario(dadosForm,res);
 
-
-
-    UsuariosDAO.inserirUsuario(dadosForm);
-
-    res.send('Podemos cadastrar')
 }
