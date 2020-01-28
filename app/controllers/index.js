@@ -15,5 +15,9 @@ module.exports.autenticar = function(application,req,res){
         return;
     }
 
-    res.redirect('jogo');
+    var connection = application.config.dbConnection;
+    var UsuariosDAO = new application.app.models.UsuariosDAO(connection);
+
+    UsuariosDAO.autenticaUsuario(dadosForm,req,res);
+    
 }

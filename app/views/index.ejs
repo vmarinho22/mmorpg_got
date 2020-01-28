@@ -28,13 +28,17 @@
 						<button type="button" class="btn btn-info">Cadastro</button>
 					</div>
 				</form>
-				<% if(validacao.length > 0){ %>
+				<% if(validacao.length > 0 || typeof validacao === 'string' || validacao instanceof String){ %>
 					<br>
 					<div class="alert alert-danger">
 						<strong>Atenção</strong>
 						<ul>
-							<% for( var i=0; i < validacao.length; i++){ %>
-								<li><%=validacao[i].msg%></li>
+							<% if(validacao[0].msg !=null){ %>
+								<% for( var i=0; i < validacao.length; i++){ %>
+									<li><%=validacao[i].msg%></li>
+								<% } %>
+							<% }else{ %>
+								<li><%=validacao%></li>
 							<% } %>
 						</ul>
 					</div>

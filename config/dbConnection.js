@@ -22,6 +22,11 @@ function query(db,dados){
         case "inserir":
                 collection.insertOne(dados.dados_usuario,dados.callback);
             break;
+
+        case "recuperar":
+                collection.findOne(dados.dados_usuario,dados.callback);
+            break;
+
         default:
             break;
     }
