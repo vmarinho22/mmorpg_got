@@ -6,10 +6,10 @@ function UsuariosDAO(connection){
 UsuariosDAO.prototype.inserirUsuario = function(dados_usuario,res){
     var dados = {
         operacao: 'inserir',
-        dados_usuario: dados_usuario,
+        dados_passados: dados_usuario,
         collection: "usuarios",
         callback: function(err,result){
-            res.send('Deu certo');
+            console.log('Deu certo');
         }
     };
     this._connection(dados);
@@ -18,7 +18,7 @@ UsuariosDAO.prototype.inserirUsuario = function(dados_usuario,res){
 UsuariosDAO.prototype.autenticaUsuario = function(dados_usuario,req,res){
     var dados = {
         operacao: 'recuperar',
-        dados_usuario: dados_usuario,
+        dados_passados: dados_usuario,
         collection: "usuarios",
         callback: function(err,result){
             // Verificando se a respostado bd não é nula
@@ -26,7 +26,7 @@ UsuariosDAO.prototype.autenticaUsuario = function(dados_usuario,req,res){
                 //Iniciando sessão
                 req.session.autorizado = true;
                 req.session.usuario = result.usuario;
-                req.session.casa = result.usuario;
+                req.session.casa = result.casa;
             }else{
                 req.session.autorizado = false;
             }

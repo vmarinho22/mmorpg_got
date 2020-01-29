@@ -20,11 +20,14 @@ function query(db,dados){
     var collection = db.collection(dados.collection);
     switch (dados.operacao){
         case "inserir":
-                collection.insertOne(dados.dados_usuario,dados.callback);
+                collection.insertOne(dados.dados_passados,dados.callback);
             break;
 
         case "recuperar":
-                collection.findOne(dados.dados_usuario,dados.callback);
+                collection.findOne(dados.dados_passados,dados.callback);
+            break;
+        case "recuperarTodos":
+                collection.find(dados.dados_passados,dados.callback);
             break;
 
         default:
