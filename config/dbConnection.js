@@ -9,7 +9,7 @@ var connMongoDB = function(dados){
     mongo.connect(url, function(err,client){
         // Verificando se existe erro de conexão
         assert.equal(null,err);
-        console.log('Connect sucessfully to server');
+        // console.log('Connect sucessfully to server');
         const db = client.db(dbName);
         query(db,dados);
         client.close();

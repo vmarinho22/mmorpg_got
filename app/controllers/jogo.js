@@ -44,8 +44,6 @@ module.exports.pergaminhos = function(application,req,res){
     var connection = application.config.dbConnection;
     var JogoDAO = new application.app.models.JogoDAO(connection);
     var usuario = req.session.usuario;
-    console.log(usuario);
-    var msg = 'A';
     JogoDAO.getAcoes(usuario,res);
 
 }

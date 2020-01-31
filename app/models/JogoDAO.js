@@ -24,7 +24,6 @@ JogoDAO.prototype.gerarParametros= function(usuario,res){
 
 
 JogoDAO.prototype.iniciaJogo = function(usuario,casa,res,msg){
-    console.log('Inicando jogo');
 
     var dados = {
         operacao: 'recuperar',
@@ -41,7 +40,6 @@ JogoDAO.prototype.iniciaJogo = function(usuario,casa,res,msg){
 
 
 JogoDAO.prototype.acao = function(acao,casa,res){
-    console.log('Inicando jogo');
 
     var date = new Date();
     date.getTime();
@@ -70,7 +68,7 @@ JogoDAO.prototype.acao = function(acao,casa,res){
         dados_passados: acao,
         collection: "acao",
         callback: function(err,result){
-           res.render('jogo',{img_casa: casa, jogo: result,msg: 'N'});
+            console.log('Enviou os dados ao banco');    
         }
     };
     this._connection(dados);
@@ -80,12 +78,12 @@ JogoDAO.prototype.acao = function(acao,casa,res){
 
 JogoDAO.prototype.getAcoes = function(usuario,res){
     var dados = {
-        operacao: 'recuperarrs',
+        operacao: 'recuperarTodos',
         dados_passados: {usuario: usuario},
         collection: "acao",
         callback: function(err,result){
-        //    res.render('pergaminhos',{acoes: result});
             console.log(result);
+            res.render('pergaminhos',{acoes: result});
         }
     };
     this._connection(dados);
